@@ -1,0 +1,17 @@
+﻿services:
+  tracinggrpcservice:
+    image: tracinggrpcservice
+    build:
+      context: .
+      dockerfile: TracingGrpcService/Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - NEW_RELIC_APPLICATION_LOGGING_ENABLED=true
+      - NEW_RELIC_APPLICATION_LOGGING_FORWARDING_ENABLED=true
+      - NEW_RELIC_APPLICATION_LOGGING_FORWARDING_CONTEXT_DATA_ENABLED=true
+      - NEW_RELIC_APPLICATION_LOGGING_FORWARDING_MAX_SAMPLES_STORED=10000
+      - NEW_RELIC_APPLICATION_LOGGING_LOCAL_DECORATING_ENABLED=true
+      - NEW_RELIC_REGION=eu
+      
+    
